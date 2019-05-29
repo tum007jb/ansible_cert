@@ -1,0 +1,17 @@
+---
+# tasks file for apache-role-1
+- name: Install yum
+  yum:
+    name: httpd
+    state: latest
+- name: Start Service
+  service:
+    name: httpd
+    state: started
+    enabled: true
+- name: Config Firewalld
+  firewalld:
+    service: http
+    permanent: yes
+    state: enabled
+    immediate: yes
